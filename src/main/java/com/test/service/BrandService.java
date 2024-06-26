@@ -6,5 +6,8 @@ public interface BrandService  {
 	Brand create(Brand brand);
 	Brand getById(int id);
 	Brand update(int id, Brand brandUpdate);
+	
+	error sotm
 }
 
+//this is week3
