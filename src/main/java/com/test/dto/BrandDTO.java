@@ -3,6 +3,6 @@ import lombok.Data;
 
 @Data
 public class BrandDTO {
-//	private int id;
+	private int id;
 	private String name;
-}
+	}

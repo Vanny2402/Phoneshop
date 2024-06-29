@@ -7,6 +7,5 @@ import com.test.entity.Brand;
 
 @Repository
 public interface BrandRepository extends JpaRepository<Brand, Integer> {
-	
 
 }

@@ -1,5 +1,7 @@
 package com.test.service;
 
+import java.util.List;
+
 import com.test.entity.Brand;
 
 public interface BrandService  {
@@ -7,7 +9,6 @@ public interface BrandService  {
 	Brand getById(int id);
 	Brand update(int id, Brand brandUpdate);
 	
-	error sotm
+	List<Brand> getAllBrn();
+	
 }
-
-//this is week3
