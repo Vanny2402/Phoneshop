@@ -1,8 +1,9 @@
-package com.test.dto;
+package com.test.spec;
+
 import lombok.Data;
 
 @Data
-public class BrandDTO {
+public class BrandFilter {
 	private Integer id;
 	private String name;
-	}
+}
