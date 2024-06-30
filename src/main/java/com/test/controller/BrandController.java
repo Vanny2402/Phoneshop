@@ -1,9 +1,6 @@
 package com.test.controller;
 
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -45,7 +42,6 @@ public class BrandController {
 //				.map(brand -> BranchMapper.INSTANCE.toBrandDTO(brand)).collect(Collectors.toList());
 //		return ResponseEntity.ok(list);
 		return ResponseEntity.ok(pageDTO);
-
 	}
 
 	@GetMapping("/{id}")

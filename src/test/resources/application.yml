@@ -1,8 +1,9 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: dbc:h2:mem:testdb
     username: sa
     password: 
+    driver-class-name: org.h2.Driver
   jpa:
     properties:
       hibernate:

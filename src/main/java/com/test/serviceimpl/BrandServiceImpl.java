@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -71,8 +70,7 @@ public class BrandServiceImpl implements BrandService {
 		if(params.containsKey(PageUtil.PAGE_NUMBER)) {
 			pageNumber=Integer.parseInt(params.get(PageUtil.PAGE_NUMBER));
 		}
-		
-		
+
 		
 		BrandSpec brandSpec=new BrandSpec(brandFilter);
 		Pageable pageable= PageUtil.getPageAble(pageNumber, pageLimit);
