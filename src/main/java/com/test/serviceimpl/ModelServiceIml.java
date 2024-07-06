@@ -19,8 +19,7 @@ public class ModelServiceIml implements ModelService {
 	private final ModelRepository modelRepository;
 	private final ModelMapper modelMapper;
 	@Override
-	public Model save(ModelDTO dto) {		
-		Model model=modelMapper.toModel(dto);
+	public Model save(Model model) {		
 		return modelRepository.save(model);
 	}
 

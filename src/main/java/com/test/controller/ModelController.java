@@ -19,11 +19,13 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/models")
 public class ModelController {
 	
-	@Autowired
+
 	private final ModelService modelService;
+	private final ModelMapper modelMapper;
 	@RequestMapping( method = RequestMethod.POST)//PostMapping
 	public ResponseEntity<?> Create(@RequestBody ModelDTO modelDTO){
-		Model model = modelService.save(modelDTO);
+		Model model =modelMapper.toModel(modelDTO);
+		model = modelService.save(model);
 		return ResponseEntity.ok(ModelMapper.INSTANCE.toModelDTO(model));
 	}
 
