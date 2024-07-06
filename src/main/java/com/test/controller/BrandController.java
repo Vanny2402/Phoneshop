@@ -38,9 +38,6 @@ public class BrandController {
 		Page<Brand> allBrn = brandService.getAllBrn(parrams);
 		
 		PageDTO pageDTO=new PageDTO(allBrn);
-//		List<BrandDTO> list = brandService.getAllBrn(parrams).stream()
-//				.map(brand -> BranchMapper.INSTANCE.toBrandDTO(brand)).collect(Collectors.toList());
-//		return ResponseEntity.ok(list);
 		return ResponseEntity.ok(pageDTO);
 	}
 
