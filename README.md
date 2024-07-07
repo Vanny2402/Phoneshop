@@ -32,6 +32,7 @@ Week8:
 				-@Mapper : Auto Load new Class iml on the Mapper generation 
 			7.Note:
 				-When we call service at Mapper we should Autowire at In the controller
+<<<<<<< HEAD
 Week9: swagger 
 	1.Add Dependency Swagger 
 	2.Add Configuration property 
@@ -45,4 +46,9 @@ Week9: swagger
 		-BrandController :
 		
 			
+=======
+				
+				New
+				
+>>>>>>> 49d1346a5ffb040733b784791bcb3e81151a01af
 			

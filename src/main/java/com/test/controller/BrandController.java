@@ -31,46 +31,42 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("brands")
 public class BrandController {
-    private final BrandService brandService;
-    private final ModelService modelService;
-    private final ModelEnitityMapper modelMapper;
-    
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> create(@RequestBody BrandDTO brandDTO) {
-        Brand brand = BranchMapper.INSTANCE.toBrand(brandDTO);
-        brand = brandService.create(brand);
-        return ResponseEntity.ok(brand);
-    }
+	private final BrandService brandService;
+	private final ModelService modelService;
+	private final ModelEnitityMapper modelMapper;
 
-    @GetMapping("")
-    public ResponseEntity<?> getAllBrands(@RequestParam Map<String, String> params) {
-        Page<Brand> allBrn = brandService.getAllBrn(params);
-        PageDTO pageDTO = new PageDTO(allBrn);
-        return ResponseEntity.ok(pageDTO);
-    }
-   
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getOneBrand(@PathVariable("id") Integer brandId) {
-        Brand brand = brandService.getById(brandId);
-        return ResponseEntity.ok(BranchMapper.INSTANCE.toBrandDTO(brand));
-    }
-    
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<?> create(@RequestBody BrandDTO brandDTO) {
+		Brand brand = BranchMapper.INSTANCE.toBrand(brandDTO);
+		brand = brandService.create(brand);
+		return ResponseEntity.ok(brand);
+	}
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") Integer brandId, @RequestBody BrandDTO brandDTO) {
-        Brand brand = BranchMapper.INSTANCE.toBrand(brandDTO);
-        Brand updatedBrand = brandService.update(brandId, brand);
-        return ResponseEntity.ok(BranchMapper.INSTANCE.toBrandDTO(updatedBrand));
-    }
-    
-    @GetMapping("{id}/models")
-    public ResponseEntity<?> update(@PathVariable("id") Integer brandId) {
+	@GetMapping("")
+	public ResponseEntity<?> getAllBrands(@RequestParam Map<String, String> params) {
+		Page<Brand> allBrn = brandService.getAllBrn(params);
+		PageDTO pageDTO = new PageDTO(allBrn);
+		return ResponseEntity.ok(pageDTO);
+	}
 
-    	List<Model> brands = modelService.getByBrandId(brandId);
-    	List<ModelDTO> list = brands.stream()
-    	.map(model-> modelMapper.toModelDTO(model))
-    	.toList();
-        return ResponseEntity.ok(list);
-    }
-    
+	@GetMapping("/{id}")
+	public ResponseEntity<?> getOneBrand(@PathVariable("id") Integer brandId) {
+		Brand brand = brandService.getById(brandId);
+		return ResponseEntity.ok(BranchMapper.INSTANCE.toBrandDTO(brand));
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<?> update(@PathVariable("id") Integer brandId, @RequestBody BrandDTO brandDTO) {
+		Brand brand = BranchMapper.INSTANCE.toBrand(brandDTO);
+		Brand updatedBrand = brandService.update(brandId, brand);
+		return ResponseEntity.ok(BranchMapper.INSTANCE.toBrandDTO(updatedBrand));
+	}
+
+	@GetMapping("{id}/models")
+	public ResponseEntity<?> update(@PathVariable("id") Integer brandId) {
+		List<Model> brands = modelService.getByBrandId(brandId);
+		List<ModelDTO> list = brands.stream().map(model -> modelMapper.toModelDTO(model)).toList();
+		return ResponseEntity.ok(list);
+	}
+
 }

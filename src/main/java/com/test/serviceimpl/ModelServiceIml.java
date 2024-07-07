@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.test.dto.ModelDTO;
 import com.test.entity.Model;
 import com.test.mapper.ModelEnitityMapper;
 import com.test.repository.ModelRepository;
