@@ -32,5 +32,17 @@ Week8:
 				-@Mapper : Auto Load new Class iml on the Mapper generation 
 			7.Note:
 				-When we call service at Mapper we should Autowire at In the controller
-				
+Week9: swagger 
+	1.Add Dependency Swagger 
+	2.Add Configuration property 
+	3.-->Implement Get model by branch 
+		-Request mapping on ModelController (GetmodelsByBrand)
+		-Define Repository On ModelRepsitory()
+		-Implement Model Service 
+			-Create function List<Model> getByBrandId(Integer id);
+		-Implement ModelserviceIml
+			-Implement function from ModelService 
+		-BrandController :
+		
+			
 			

@@ -17,10 +17,9 @@ public interface PageUtil {
 			pageSize=DEFAULT_PAGE_LIMINT;
 		}
 		
-		
 		Pageable pageable=PageRequest.of(pageNumber-1, pageSize);
 		return pageable;
 	}
-	
+
 
 }

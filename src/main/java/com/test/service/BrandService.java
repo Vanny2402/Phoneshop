@@ -14,7 +14,5 @@ public interface BrandService  {
 	List<Brand> getAllBrn();
 	List<Brand> getAllBrn(String name);
 	Page<Brand> getAllBrn(Map<String, String> params);
-	
-	
-	
+
 }

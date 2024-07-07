@@ -1,5 +1,6 @@
 package com.test.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,45 +16,61 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.test.dto.BrandDTO;
+import com.test.dto.ModelDTO;
 import com.test.dto.PageDTO;
 import com.test.entity.Brand;
+import com.test.entity.Model;
 import com.test.mapper.BranchMapper;
+import com.test.mapper.ModelEnitityMapper;
 import com.test.service.BrandService;
+import com.test.service.ModelService;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("brands")
 public class BrandController {
-	@Autowired
-	private BrandService brandService;
+    private final BrandService brandService;
+    private final ModelService modelService;
+    private final ModelEnitityMapper modelMapper;
+    
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> create(@RequestBody BrandDTO brandDTO) {
+        Brand brand = BranchMapper.INSTANCE.toBrand(brandDTO);
+        brand = brandService.create(brand);
+        return ResponseEntity.ok(brand);
+    }
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<?> create(@RequestBody BrandDTO brandDTO) {
-		Brand brand = BranchMapper.INSTANCE.toBrand(brandDTO);
-		brand = brandService.create(brand);
-		return ResponseEntity.ok(brand);
-	}
+    @GetMapping("")
+    public ResponseEntity<?> getAllBrands(@RequestParam Map<String, String> params) {
+        Page<Brand> allBrn = brandService.getAllBrn(params);
+        PageDTO pageDTO = new PageDTO(allBrn);
+        return ResponseEntity.ok(pageDTO);
+    }
+   
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getOneBrand(@PathVariable("id") Integer brandId) {
+        Brand brand = brandService.getById(brandId);
+        return ResponseEntity.ok(BranchMapper.INSTANCE.toBrandDTO(brand));
+    }
+    
 
-	@GetMapping("")
-	public ResponseEntity<?> getAllBrands(@RequestParam Map<String, String> parrams) {
-		Page<Brand> allBrn = brandService.getAllBrn(parrams);
-		
-		PageDTO pageDTO=new PageDTO(allBrn);
-//		List<BrandDTO> list = brandService.getAllBrn(parrams).stream()
-//				.map(brand -> BranchMapper.INSTANCE.toBrandDTO(brand)).collect(Collectors.toList());
-//		return ResponseEntity.ok(list);
-		return ResponseEntity.ok(pageDTO);
-	}
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable("id") Integer brandId, @RequestBody BrandDTO brandDTO) {
+        Brand brand = BranchMapper.INSTANCE.toBrand(brandDTO);
+        Brand updatedBrand = brandService.update(brandId, brand);
+        return ResponseEntity.ok(BranchMapper.INSTANCE.toBrandDTO(updatedBrand));
+    }
+    
+    @GetMapping("{id}/models")
+    public ResponseEntity<?> update(@PathVariable("id") Integer brandId) {
 
-	@GetMapping("/{id}")
-	public ResponseEntity<?> getOneBrand(@PathVariable("id") Integer brandId) {
-		Brand brand = brandService.getById(brandId);
-		return ResponseEntity.ok(BranchMapper.INSTANCE.toBrandDTO(brand));
-	}
-
-	@PutMapping("/{id}")
-	public ResponseEntity<?> update(@PathVariable("id") Integer brandId, @RequestBody BrandDTO brandDTO) {
-		Brand brand = BranchMapper.INSTANCE.toBrand(brandDTO);
-		Brand updatedBrand = brandService.update(brandId, brand);
-		return ResponseEntity.ok(BranchMapper.INSTANCE.toBrandDTO(updatedBrand));
-	}
+    	List<Model> brands = modelService.getByBrandId(brandId);
+    	List<ModelDTO> list = brands.stream()
+    	.map(model-> modelMapper.toModelDTO(model))
+    	.toList();
+        return ResponseEntity.ok(list);
+    }
+    
 }

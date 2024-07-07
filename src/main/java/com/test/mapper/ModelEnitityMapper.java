@@ -10,9 +10,9 @@ import com.test.entity.Model;
 import com.test.service.BrandService;
 
 @Mapper(uses = {BrandService.class},componentModel = "spring")
-public interface ModelMapper {
+public interface ModelEnitityMapper {
 
-	ModelMapper INSTANCE=Mappers.getMapper(ModelMapper.class);
+	ModelEnitityMapper INSTANCE=Mappers.getMapper(ModelEnitityMapper.class);
 	
 	@Mapping(target = "brand",source ="brandId")
 	Model toModel(ModelDTO dto);

@@ -75,7 +75,6 @@ public class BrandServiceImpl implements BrandService {
 			pageNumber=Integer.parseInt(params.get(PageUtil.PAGE_NUMBER));
 		}
 
-		
 		BrandSpec brandSpec=new BrandSpec(brandFilter);
 		Pageable pageable= PageUtil.getPageAble(pageNumber, pageLimit);
 	    Page<Brand> page = brandRepository.findAll(brandSpec,pageable);
