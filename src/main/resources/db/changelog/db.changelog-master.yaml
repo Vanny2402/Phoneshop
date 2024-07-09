@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/001_init_db_structure.yml
+  - include:
+      file: db/changelog/002_insert_brand.yml
+  - include:
+      file: db/changelog/003-adjust-brand-sequence.yaml

@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003_adjust_brand_sequence_postgres
+      author: vannykourn168@gmail.com
+      dbms: postgresql
+      changes:
+        - sql:
+            sql: "SELECT setval('brands_brand_id_seq', (SELECT MAX(brand_id) FROM brands));"
+
+  - changeSet:
+      id: 003_adjust_brand_sequence_h2
+      author: vannykourn168@gmail.com
+      dbms: h2
+      changes:
+        - sql:
+            sql: |
+              ALTER TABLE brands ALTER COLUMN brand_id RESTART WITH 1;

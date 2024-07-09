@@ -32,7 +32,6 @@ Week8:
 				-@Mapper : Auto Load new Class iml on the Mapper generation 
 			7.Note:
 				-When we call service at Mapper we should Autowire at In the controller
-<<<<<<< HEAD
 Week9: swagger 
 	1.Add Dependency Swagger 
 	2.Add Configuration property 
@@ -44,11 +43,9 @@ Week9: swagger
 		-Implement ModelserviceIml
 			-Implement function from ModelService 
 		-BrandController :
+Week8: Liquibase 
+	1.To know if someone Update or anything on database 
+	2.Configuration
+		-Add Dependency
+		-Liquibase change Log: liquibase.change-log=classpath:liquibase-changeLog.xml
 		
-			
-=======
-				
-				New
-				
->>>>>>> 49d1346a5ffb040733b784791bcb3e81151a01af
-			
