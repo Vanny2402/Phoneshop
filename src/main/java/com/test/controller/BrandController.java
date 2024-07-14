@@ -49,20 +49,20 @@ public class BrandController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getOneBrand(@PathVariable("id") Integer brandId) {
+	public ResponseEntity<?> getOneBrand(@PathVariable("id") Long brandId) {
 		Brand brand = brandService.getById(brandId);
 		return ResponseEntity.ok(BranchMapper.INSTANCE.toBrandDTO(brand));
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<?> update(@PathVariable("id") Integer brandId, @RequestBody BrandDTO brandDTO) {
+	public ResponseEntity<?> update(@PathVariable("id") Long brandId, @RequestBody BrandDTO brandDTO) {
 		Brand brand = BranchMapper.INSTANCE.toBrand(brandDTO);
 		Brand updatedBrand = brandService.update(brandId, brand);
 		return ResponseEntity.ok(BranchMapper.INSTANCE.toBrandDTO(updatedBrand));
 	}
 
 	@GetMapping("{id}/models")
-	public ResponseEntity<?> update(@PathVariable("id") Integer brandId) {
+	public ResponseEntity<?> update(@PathVariable("id") Long brandId) {
 		List<Model> brands = modelService.getByBrandId(brandId);
 		List<ModelDTO> list = brands.stream().map(model -> modelMapper.toModelDTO(model)).toList();
 		return ResponseEntity.ok(list);

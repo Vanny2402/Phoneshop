@@ -9,8 +9,8 @@ import com.test.entity.Brand;
 
 public interface BrandService  {
 	Brand create(Brand brand);
-	Brand getById(Integer id);
-	Brand update(Integer id, Brand brandUpdate);
+	Brand getById(Long id);
+	Brand update(Long id, Brand brandUpdate);
 	List<Brand> getAllBrn();
 	List<Brand> getAllBrn(String name);
 	Page<Brand> getAllBrn(Map<String, String> params);

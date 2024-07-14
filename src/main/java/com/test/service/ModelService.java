@@ -7,6 +7,8 @@ import com.test.entity.Model;
 
 public interface ModelService {
 	Model save(Model model);
-	List<Model> getByBrandId(Integer id);
+	List<Model> getByBrandId(Long id);
+
+	Model getById(Long id);
 	
 }

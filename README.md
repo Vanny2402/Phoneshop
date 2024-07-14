@@ -48,4 +48,32 @@ Week8: Liquibase
 	2.Configuration
 		-Add Dependency
 		-Liquibase change Log: liquibase.change-log=classpath:liquibase-changeLog.xml
+Week11:Product 
+	1.Product 
+		-id
+		-aviablable_unit 
+		-image_path 
+		-sale_price
+		-color_id
+		-name(Iphone14 pro max red)
+		-model_id
+	2.Color
+		-id
+		-name
+	3.product_import_history
+		-id
+		-date_import
+		-import_unit
+		-price_per_unit(priceIn)
+		-product_id 
+	4.sale
+		-id
+		-sale_date
+	5.sale_detail
+		-id
+		-sale_id
+		-product_id
+		-amount
+		-unit
+		-total amount
 		
