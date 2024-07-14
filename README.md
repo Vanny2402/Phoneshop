@@ -76,4 +76,18 @@ Week11:Product
 		-amount
 		-unit
 		-total amount
-		
+Week11:Import product:
+	1.productId
+	2.importUnit 
+	3.importPrice(PriceIn)
+	4.importDate
+-ProductImportDTO
+-ProductService 
+-ProductServiceiml
+-ProductHistoryRepository 
+--> Add javax.validation
+--> Add <dependency>
+    <groupId>org.hibernate.validator</groupId>
+    <artifactId>hibernate-validator</artifactId>
+</dependency>
+

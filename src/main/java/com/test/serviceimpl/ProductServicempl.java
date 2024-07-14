@@ -1,9 +1,15 @@
 package com.test.serviceimpl;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import com.test.dto.ProductImportDTO;
 import com.test.entity.Product;
+import com.test.entity.ProductImportHistory;
+import com.test.exception.ApiExeption;
 import com.test.exception.ResourceNotFoundException;
+import com.test.mapper.ProductMapper;
+import com.test.repository.ProductImportHistoryRepository;
 import com.test.repository.ProductRepository;
 import com.test.service.ProductService;
 
@@ -13,6 +19,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ProductServicempl implements ProductService {
 	private final ProductRepository productRepository;
+	private final ProductImportHistoryRepository importHistoryRepository;
+	private final ProductMapper productMapper;
 
 	@Override
 	public Product create(Product product) {
@@ -25,6 +33,22 @@ public class ProductServicempl implements ProductService {
 	@Override
 	public Product getById(Long id) {
 		return productRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Product",id));
+	}
+
+	@Override
+	public void importProduct(ProductImportDTO importDTO) {
+		//Update product QTY		
+		Product product = getById(importDTO.getProductId());
+		Integer avalaibleUnit=0;
+		if(product.getAvaliableUnit()!=null) {
+			avalaibleUnit=product.getAvaliableUnit();
+		}
+		product.setAvaliableUnit(avalaibleUnit+importDTO.getImportUnit());
+		productRepository.save(product);
+		
+		//Save product importHisotry	
+		ProductImportHistory importHistory = productMapper.toProductImportHistory(importDTO, product);
+		importHistoryRepository.save(importHistory);
 	}
 
 }

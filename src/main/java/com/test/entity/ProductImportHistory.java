@@ -1,7 +1,7 @@
 package com.test.entity;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,27 +15,24 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="productImportHistory")
+@Table(name = "productImportHistory")
 public class ProductImportHistory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="import_id")
+	@Column(name = "import_id")
 	private Long id;
-	
-	
-	@Column(name="date_import")
-	private LocalDateTime dateImport;
-	
-	@Column(name="import_unit")
+
+	@Column(name = "date_import")
+	private LocalDate dateImport;
+
+	@Column(name = "import_unit")
 	private Integer importUnit;
-	
-	@Column(name="perice_per_unit")
+
+	@Column(name = "perice_per_unit")
 	private BigDecimal pricePerUnit;
-	
-	
-	
+
 	@ManyToOne
-	@JoinColumn(name="product_id")
-	private Product product; 	
+	@JoinColumn(name = "product_id")
+	private Product product;
 }
