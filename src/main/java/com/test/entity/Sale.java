@@ -1,8 +1,7 @@
 package com.test.entity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,5 +21,5 @@ public class Sale {
 	private Long saleId;
 	
 	@Column(name="sold_date")
-	private LocalDateTime soldDate;
+	private LocalDate soldDate;
 }

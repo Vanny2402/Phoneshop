@@ -1,5 +1,7 @@
 package com.test.serviceimpl;
 
+import java.math.BigDecimal;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +51,20 @@ public class ProductServicempl implements ProductService {
 		//Save product importHisotry	
 		ProductImportHistory importHistory = productMapper.toProductImportHistory(importDTO, product);
 		importHistoryRepository.save(importHistory);
+	}
+
+	@Override
+	public void setSalePrice(Long productId, BigDecimal price) {
+
+		 Product product= getById(productId);
+		 product.setSalePrice(price);
+		 productRepository.save(product);
+	}
+
+	@Override
+	public void validateStock(Long productId, Integer numberOfUnit) {
+
+		
 	}
 
 }
